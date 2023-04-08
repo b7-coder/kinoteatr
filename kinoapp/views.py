@@ -3,7 +3,13 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return render(request, 'kinoapp/index.html')
+    context = {
+        'title':'index',
+    }
+    return render(request, 'kinoapp/index.html', context)
 
 def blog(request):
-    return render(request, 'kinoapp/blog.html')
+    context = {
+        'title':'blog',
+    }
+    return render(request, 'kinoapp/blog.html',context)
