@@ -7,6 +7,7 @@ from kinoapp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('blog/', blog),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
