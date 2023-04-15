@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 
 class Products(models.Model):
+    image = models.ImageField() # новая строка
     name = models.CharField(max_length=100)
     description = models.TextField()
     types = [
