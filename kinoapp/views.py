@@ -18,3 +18,14 @@ def blog(request):
     }
 
     return render(request, 'kinoapp/blog.html',context)
+
+def news(request):
+
+    rows = News.objects.all()
+
+    context = {
+        'title':'news',
+        'rows': rows,
+    }
+
+    return render(request, 'kinoapp/news.html',context)
