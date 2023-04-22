@@ -9,6 +9,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('blog/', blog, name='blog'),
     path('news/', news, name='news'),
+    path('newsDetail/<int:id>', newsDetails, name='newsDetails'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

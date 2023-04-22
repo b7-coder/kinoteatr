@@ -14,8 +14,10 @@
                     {% for item in rows %}
                         <div class="col-lg-8">
                             <div class="blog__details__title">
-                                <h6>Дата <span>{{item.created_at}}</span></h6>
-                                <h2>{{item.name}}</h2>   
+                                <a href="{% url 'newsDetails' item.id %}">
+                                    <h6>Дата <span>{{item.created_at}}</span></h6>
+                                    <h2>{{item.name}}</h2> 
+                                </a>  
                             </div>
                         </div>
                     {% endfor %}

@@ -29,3 +29,14 @@ def news(request):
     }
 
     return render(request, 'kinoapp/news.html',context)
+
+def newsDetails(request, id):
+
+    rows = NewsDetails.objects.filter(newsObject__id=id)
+
+    context = {
+        'title':'news',
+        'rows': rows,
+    }
+
+    return render(request, 'kinoapp/blog-details.html',context)
