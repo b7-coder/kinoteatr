@@ -28,10 +28,18 @@ class Products(models.Model):
     views = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Произведения'
+        verbose_name_plural = 'Произведения'
+
 class ProductsImages(models.Model):
   productObject = models.ForeignKey(Products, on_delete=models.CASCADE)
   image = models.ImageField()
   created_at = models.DateTimeField(auto_now_add=True)
+
+  class Meta:
+        verbose_name = 'Картинки произведений'
+        verbose_name_plural = 'Картинки произведений'
 
 class Rating(models.Model):
 	userObject = models.ForeignKey(
@@ -42,17 +50,22 @@ class Rating(models.Model):
 	score = models.IntegerField()
 	created_at = models.DateTimeField(auto_now_add=True)
 
-# products-serias
 
 class Categories(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField()
     created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
 
 class ProductsCategories(models.Model):
     productObject = models.ForeignKey(Products, on_delete=models.CASCADE)
     categoryObject = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'Категории произведений'
+        verbose_name_plural = 'Категории произведений'
 
 class Comments(models.Model):
     productObject = models.ForeignKey(Products, on_delete=models.CASCADE)
@@ -63,9 +76,20 @@ class Comments(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'Комментарии'
+        verbose_name_plural = 'Комментарии'
+
 class News(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Новости'
+        verbose_name_plural = 'Новости'
 
 class NewsDetails(models.Model):
     name = models.CharField(max_length=100)
@@ -73,6 +97,13 @@ class NewsDetails(models.Model):
     image = models.ImageField()
     newsObject = models.ForeignKey(News, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Новости детали'
+        verbose_name_plural = 'Новости детали'
 
 class OurBlog(models.Model):
     # PO - product object foreign key
@@ -82,3 +113,11 @@ class OurBlog(models.Model):
     secondTopSmallImagePO = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='small2')
     firstLowSmallImagePO = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='small3')
     secondLowSmallImagePO = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='small4')
+
+    def __str__(self):
+        return f""" левая большая картинка {self.leftBigImagePO.name},
+        правая большая картинка {self.rightBigImagePO.name}"""
+
+    class Meta:
+        verbose_name = 'Картинки блога'
+        verbose_name_plural = 'Картинки блога'
