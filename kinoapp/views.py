@@ -40,3 +40,14 @@ def newsDetails(request, id):
     }
 
     return render(request, 'kinoapp/blog-details.html',context)
+
+def animeDetail(request, id):
+
+    item = Products.objects.get(id=id)
+
+    context = {
+        'title':'news',
+        'row': item,
+    }
+
+    return render(request, 'kinoapp/anime-details.html',context)

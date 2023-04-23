@@ -10,6 +10,7 @@ urlpatterns = [
     path('blog/', blog, name='blog'),
     path('news/', news, name='news'),
     path('newsDetail/<int:id>', newsDetails, name='newsDetails'),
+    path('animeDetail/<int:id>', animeDetail, name='animeDetail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

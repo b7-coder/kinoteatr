@@ -28,6 +28,9 @@ class Products(models.Model):
     views = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Произведения'
         verbose_name_plural = 'Произведения'
@@ -42,13 +45,16 @@ class ProductsImages(models.Model):
         verbose_name_plural = 'Картинки произведений'
 
 class Rating(models.Model):
-	userObject = models.ForeignKey(
+    userObject = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-	productObject = models.ForeignKey(Products,on_delete=models.CASCADE)
-	score = models.IntegerField()
-	created_at = models.DateTimeField(auto_now_add=True)
+    productObject = models.ForeignKey(Products,on_delete=models.CASCADE)
+    score = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name = 'Рейтинг'
+        verbose_name_plural = 'Рейтинг'
 
 
 class Categories(models.Model):
