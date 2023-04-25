@@ -1,10 +1,2 @@
-from datetime import datetime
-
-# datetime object containing current date and time
-begin = datetime.now()
-
-for i in range(1000000):
-    print(i)
-
-print(begin)
-print(datetime.now())
+nums = [1,2,3,4,5,6,7,8]
+print(nums[0:6])

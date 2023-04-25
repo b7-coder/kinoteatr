@@ -4,8 +4,12 @@ from .models import *
 # Create your views here.
 
 def index(request):
+
+    rows = Products.objects.all()[0:6]
+
     context = {
         'title':'index',
+        'rows': rows
     }
     return render(request, 'kinoapp/index.html', context)
 
