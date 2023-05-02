@@ -7,6 +7,7 @@ from kinoapp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('search/', searhLogic, name='search'),
     path('blog/', blog, name='blog'),
     path('news/', news, name='news'),
     path('newsDetail/<int:id>', newsDetails, name='newsDetails'),
